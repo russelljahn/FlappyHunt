@@ -64,5 +64,15 @@ public class FlappyBird : MonoBehaviour {
 	}
 
 
+	void OnCollisionEnter(Collision collision) {
+		Debug.Log (collision.gameObject.name + " collided with " + this.gameObject.name);
+
+		if (collision.gameObject.CompareTag("Explosion")) {
+			deathParticles.gameObject.SetActive(true);
+			deathParticles.transform.parent = null;
+			GameObject.Destroy(this.gameObject);
+		}
+
+	}
 
 }
