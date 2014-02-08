@@ -17,7 +17,10 @@ public class FlappyBird : MonoBehaviour {
 	public float upRotationTime;
 	public float upRotationMaxTime = 1.0f;
 
+	public GameObject deathParticles;
+
 	public float diveBombSpeed = 3.0f;
+	public float timeUntilGuillotine = 8.0f;
 
 
 	// Use this for initialization
@@ -34,6 +37,11 @@ public class FlappyBird : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		timeUntilGuillotine -= Time.deltaTime;
+
+		if (timeUntilGuillotine <= 0.0f) {
+			GameObject.Destroy(this.gameObject);
+		}
 
 
 		if (currentTimeUntilJump <= 0f) {
