@@ -4,8 +4,6 @@ using System.Collections;
 
 public class FlappyBird : MonoBehaviour {
 
-	public static long numKilled;
-
 	public Vector3 direction;
 	public float minTimeUntilJump = 1.0f;
 	public float maxTimeUntilJump = 2.0f;
@@ -32,7 +30,6 @@ public class FlappyBird : MonoBehaviour {
 			downRotation.y = 180f;
 		}
 		upRotationTime = upRotationMaxTime;
-		numKilled = 0;
 	}
 
 
@@ -74,7 +71,7 @@ public class FlappyBird : MonoBehaviour {
 			deathParticles.gameObject.SetActive(true);
 			deathParticles.transform.parent = null;
 			GameObject.Destroy(this.gameObject);
-			++numKilled;
+			++GameManager.numKilled;
 		}
 
 	}
