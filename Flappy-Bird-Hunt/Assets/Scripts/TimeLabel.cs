@@ -10,6 +10,6 @@ public class TimeLabel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<UILabel>().text = Mathf.FloorToInt(GameManager.timeRemaining).ToString();
+		GetComponent<UILabel>().text = Mathf.FloorToInt(Mathf.Max(0.0f, GameManager.timeRemaining)).ToString();
 	}
 }

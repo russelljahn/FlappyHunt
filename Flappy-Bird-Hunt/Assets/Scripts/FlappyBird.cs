@@ -22,6 +22,8 @@ public class FlappyBird : MonoBehaviour {
 	public float diveBombSpeed = 3.0f;
 	public float timeUntilGuillotine = 8.0f;
 
+	public AudioClip [] clips;
+
 
 	// Use this for initialization
 	void Start () {
@@ -65,11 +67,18 @@ public class FlappyBird : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision collision) {
-		Debug.Log (collision.gameObject.name + " collided with " + this.gameObject.name);
+//		Debug.Log (collision.gameObject.name + " collided with " + this.gameObject.name);
 
 		if (collision.gameObject.CompareTag("Explosion")) {
 			deathParticles.gameObject.SetActive(true);
 			deathParticles.transform.parent = null;
+
+			deathParticles.AddComponent<AudioSource>();
+
+			int soundToPlayIndex = UnityEngine.Random.Range(0, clips.Length);
+			deathParticles.GetComponent<AudioSource>().PlayOneShot(clips[soundToPlayIndex]);
+
+
 			GameObject.Destroy(this.gameObject);
 			++GameManager.numKilled;
 		}
