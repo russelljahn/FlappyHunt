@@ -20,7 +20,7 @@ namespace Assets.Scripts
         // Update is called once per frame
         void Update () {
 
-            SpawnSpeed = (1.0f-GameManager.timeRemaining/60f);
+            SpawnSpeed = (1.0f-GameManager.TimeRemaining/60f);
 
             if (TimeUntilNextSpawn <= 0.0f) {
                 var spawnLocation = collider.bounds.center;
