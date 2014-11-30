@@ -1,21 +1,23 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
-public class HoverCosine : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class HoverCosine : MonoBehaviour {
 
-	public float waveStart = 0.0f;
-	public float waveSpeed = 1.0f;
-	public float waveHeight = 1.0f;
+        public float WaveStart = 0.0f;
+        public float WaveSpeed = 1.0f;
+        public float WaveHeight = 1.0f;
 
-	private Vector3 originalPosition;
+        private Vector3 _originalPosition;
 	
-	// Use this for initialization
-	void Start () {
-		originalPosition = this.transform.position;
-	}
+        // Use this for initialization
+        void Start () {
+            _originalPosition = transform.position;
+        }
 	
-	// Update is called once per frame
-	void Update () {
-		this.transform.position = new Vector3(0.0f, waveHeight*Mathf.Cos(Mathf.PI*waveStart + waveSpeed*Time.time*Mathf.PI)) + originalPosition;
-	}
+        // Update is called once per frame
+        void Update () {
+            transform.position = new Vector3(0.0f, WaveHeight*Mathf.Cos(Mathf.PI*WaveStart + WaveSpeed*Time.time*Mathf.PI)) + _originalPosition;
+        }
+    }
 }

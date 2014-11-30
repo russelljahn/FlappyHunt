@@ -1,66 +1,68 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
-public class GameManager : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class GameManager : MonoBehaviour {
 
-	public static long numKilled;
-	public static float timeRemaining;
-	public static float maxTimeRemaining = 60;
+        public static long NumKilled;
+        public static float TimeRemaining;
+        public static float MaxTimeRemaining = 60;
 	
 
-	public static GameObject titleOverlay;
-	public static GameObject gameOverOverlay;
+        public static GameObject TitleOverlay;
+        public static GameObject GameOverOverlay;
 
-	public static bool gameOver = false;
-	public static bool mainMenu = true;
+        public static bool GameOver = false;
+        public static bool MainMenu = true;
 	
 
-	// Use this for initialization
-	void Start () {
-		timeRemaining = maxTimeRemaining;
+        // Use this for initialization
+        void Start () {
+            TimeRemaining = MaxTimeRemaining;
 
-		titleOverlay = GameObject.FindWithTag("Title");
-		gameOverOverlay = GameObject.FindWithTag("GameOver");
-		gameOverOverlay.SetActive(false);
+            TitleOverlay = GameObject.FindWithTag("Title");
+            GameOverOverlay = GameObject.FindWithTag("GameOver");
+            GameOverOverlay.SetActive(false);
 		
-		Time.timeScale = 0.0f;
-	}
+            Time.timeScale = 0.0f;
+        }
 
-	// Update is called once per frame
-	void Update () {
-		timeRemaining -= Time.deltaTime;
+        // Update is called once per frame
+        void Update () {
+            TimeRemaining -= Time.deltaTime;
 
-		if (timeRemaining <= 0) {
+            if (TimeRemaining <= 0) {
 //			Time.timeScale = 0.0f;
-			gameOverOverlay.gameObject.SetActive(true);
-			gameOver = true;
-		}
-	}
+                GameOverOverlay.gameObject.SetActive(true);
+                GameOver = true;
+            }
+        }
 
 
 
-	public static void HandleTitleScreenTouch() {
-		GameManager.titleOverlay.SetActive(false);
-		Time.timeScale = 1.0f;
-		GameManager.mainMenu = false;
-		GameManager.gameOver = false;
-	}
+        public static void HandleTitleScreenTouch() {
+            TitleOverlay.SetActive(false);
+            Time.timeScale = 1.0f;
+            MainMenu = false;
+            GameOver = false;
+        }
 
 
 
-	public static void HandleGameOverScreenTouch() {
-		GameManager.numKilled = 0;
-		GameManager.timeRemaining = maxTimeRemaining;
-		GameManager.gameOver = false;
-		GameManager.mainMenu = true;
+        public static void HandleGameOverScreenTouch() {
+            NumKilled = 0;
+            TimeRemaining = MaxTimeRemaining;
+            GameOver = false;
+            MainMenu = true;
 		
-		GameManager.gameOverOverlay.SetActive(false);
-		GameManager.titleOverlay.SetActive(true);
+            GameOverOverlay.SetActive(false);
+            TitleOverlay.SetActive(true);
 		
 		
-		Application.LoadLevel(Application.loadedLevel);
-	}
+            Application.LoadLevel(Application.loadedLevel);
+        }
 
 
 
+    }
 }

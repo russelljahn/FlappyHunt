@@ -1,23 +1,24 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
-public class ActivateOnTime : MonoBehaviour {
 
-	public float timeToActivate;
-	public FlappySpawner spawner;
+namespace Assets.Scripts
+{
+    public class ActivateOnTime : MonoBehaviour
+    {
+        public FlappySpawner Spawner;
+        public float TimeToActivate;
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (GameManager.timeRemaining <= timeToActivate) {
-			spawner.enabled = true;
-//			spawner.gameObject.SetActive(true);
-			Destroy(this);
-		}
+        // Use this for initialization
+        private void Start() { }
 
-	}
+        // Update is called once per frame
+        private void Update()
+        {
+            if (GameManager.TimeRemaining <= TimeToActivate)
+            {
+                Spawner.enabled = true;
+                Destroy(this);
+            }
+        }
+    }
 }

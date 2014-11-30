@@ -1,29 +1,31 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
-public class HandleTouch : MonoBehaviour {
-
-
-	public string explosionPath = "Exploda";
+namespace Assets.Scripts
+{
+    public class HandleTouch : MonoBehaviour {
 
 
-	void OnPress (bool isDown) {
+        public string ExplosionPath = "Exploda";
 
-		if (!isDown) {
+
+        void OnPress (bool isDown) {
+
+            if (!isDown) {
 		
-			if (GameManager.mainMenu) {
-				GameManager.HandleTitleScreenTouch();
-			}
-			else if (GameManager.gameOver) {
-				GameManager.HandleGameOverScreenTouch();
-			}
-			else {
-				Vector3 clickInWorldCoord = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-				clickInWorldCoord.z = 0.0f;
-				GameObject.Instantiate(Resources.Load(explosionPath), clickInWorldCoord, Quaternion.identity);
-			}
+                if (GameManager.MainMenu) {
+                    GameManager.HandleTitleScreenTouch();
+                }
+                else if (GameManager.GameOver) {
+                    GameManager.HandleGameOverScreenTouch();
+                }
+                else {
+                    var clickInWorldCoord = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    clickInWorldCoord.z = 0.0f;
+                    Instantiate(Resources.Load(ExplosionPath), clickInWorldCoord, Quaternion.identity);
+                }
 
-		}
+            }
 		
-	}
+        }
+    }
 }

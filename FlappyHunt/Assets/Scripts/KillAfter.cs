@@ -1,21 +1,23 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
-public class KillAfter : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class KillAfter : MonoBehaviour {
 
-	public float timeUntilDeath = 5.0f;
+        public float TimeUntilDeath = 5.0f;
 
-	// Use this for initialization
-	void Start () {
+        // Use this for initialization
+        void Start () {
 	
-	}
+        }
 	
-	// Update is called once per frame
-	void Update () {
-		timeUntilDeath -= Time.deltaTime;
+        // Update is called once per frame
+        void Update () {
+            TimeUntilDeath -= Time.deltaTime;
 
-		if (timeUntilDeath <= 0.0f) {
-			GameObject.Destroy(this.gameObject);
-		}
-	}
+            if (TimeUntilDeath <= 0.0f) {
+                Destroy(gameObject);
+            }
+        }
+    }
 }

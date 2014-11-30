@@ -1,23 +1,25 @@
-﻿using UnityEngine;
-using System.Collections;
+using UnityEngine;
 
-public class FlappyBirdKiller : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class FlappyBirdKiller : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+        // Use this for initialization
+        void Start () {
 	
-	}
+        }
 	
-	// Update is called once per frame
-	void Update () {
+        // Update is called once per frame
+        void Update () {
 	
-	}
+        }
 
 
-	void OnCollisionEnter(Collision collision) {
-		Debug.Log (collision.gameObject.name + " passed through these here parts!");
-		if (collision.gameObject.CompareTag("Flappy")) {
-			GameObject.Destroy(collision.gameObject);
-		}
-	}
+        void OnCollisionEnter(Collision collision) {
+            Debug.Log (collision.gameObject.name + " passed through these here parts!");
+            if (collision.gameObject.CompareTag("Flappy")) {
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }

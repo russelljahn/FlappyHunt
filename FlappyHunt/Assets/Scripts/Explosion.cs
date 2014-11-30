@@ -1,26 +1,28 @@
 ﻿using UnityEngine;
-using System.Collections;
 
-public class Explosion : MonoBehaviour {
+namespace Assets.Scripts
+{
+    public class Explosion : MonoBehaviour {
 
-	public float timeUntilDeath = 1.0f;
+        public float TimeUntilDeath = 1.0f;
 
-	public SphereCollider sphereCollider;
+        public SphereCollider SphereCollider;
 
-	// Use this for initialization
-	void Start () {
+        // Use this for initialization
+        void Start () {
 		
-	}
+        }
 	
-	// Update is called once per frame
-	void Update () {
+        // Update is called once per frame
+        void Update () {
 
-		timeUntilDeath -= Time.deltaTime;
-		sphereCollider.radius += Time.deltaTime;
+            TimeUntilDeath -= Time.deltaTime;
+            SphereCollider.radius += Time.deltaTime;
 
-		if (timeUntilDeath <= 0f) {
-			GameObject.Destroy(this.gameObject);
-		}
+            if (TimeUntilDeath <= 0f) {
+                Destroy(gameObject);
+            }
 
-	}
+        }
+    }
 }
